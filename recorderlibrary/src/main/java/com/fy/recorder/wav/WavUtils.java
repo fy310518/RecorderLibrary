@@ -41,7 +41,7 @@ public class WavUtils {
      * @param header wav头数据
      */
     public static void writeHeader(File file, byte[] header) {
-        if (!FileUtils.isFile(file)) {
+        if (!FileUtils.fileIsExist(file.getPath())) {
             return;
         }
 
@@ -74,7 +74,7 @@ public class WavUtils {
      * @throws IOException Exception
      */
     public static void pcmToWav(File pcmFile, byte[] header) throws IOException {
-        if (!FileUtils.isFile(pcmFile)) {
+        if (!FileUtils.fileIsExist(pcmFile.getPath())) {
             return;
         }
         String pcmPath = pcmFile.getAbsolutePath();
