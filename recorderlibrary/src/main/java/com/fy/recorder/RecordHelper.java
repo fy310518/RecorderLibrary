@@ -385,7 +385,7 @@ public class RecordHelper {
      * 添加Wav头文件
      */
     private void makeWav() {
-        if (!FileUtils.isFile(resultFile) || resultFile.length() == 0) {
+        if (!FileUtils.fileIsExist(resultFile.getPath()) || resultFile.length() == 0) {
             return;
         }
         byte[] header = WavUtils.generateWavFileHeader((int) resultFile.length(), currentConfig.getSampleRate(), currentConfig.getChannelCount(), currentConfig.getEncoding());
