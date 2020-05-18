@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RecorderLibrary.iml" filepath="$PROJECT_DIR$/RecorderLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/RecorderLibrary-app.iml" filepath="$PROJECT_DIR$/app/RecorderLibrary-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/recorderlibrary/recorderlibrary.iml" filepath="$PROJECT_DIR$/recorderlibrary/recorderlibrary.iml" />
     </modules>

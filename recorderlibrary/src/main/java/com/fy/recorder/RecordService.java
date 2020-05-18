@@ -38,6 +38,8 @@ public class RecordService extends Service {
 
     private final static int ACTION_PAUSE_RECORD = 4;
 
+    private final static int ACTION_CANCEL_RECORD = 5;
+
     private final static String PARAM_PATH = "path";
 
 
@@ -69,7 +71,8 @@ public class RecordService extends Service {
                 case ACTION_PAUSE_RECORD:
                     doPauseRecording();
                     break;
-                default:
+                case ACTION_CANCEL_RECORD:
+                    doCancelRecording();
                     break;
             }
             return START_STICKY;
@@ -83,6 +86,12 @@ public class RecordService extends Service {
         Intent intent = new Intent(context, RecordService.class);
         intent.putExtra(ACTION_NAME, ACTION_START_RECORD);
         intent.putExtra(PARAM_PATH, FileUtils.createFile(FileUtils.record, "RECORD_", currentConfig.getFormat().getExtension(), 2).getPath());
+        context.startService(intent);
+    }
+
+    public static void cancelRecording(Context context) {
+        Intent intent = new Intent(context, RecordService.class);
+        intent.putExtra(ACTION_NAME, ACTION_CANCEL_RECORD);
         context.startService(intent);
     }
 
@@ -178,6 +187,12 @@ public class RecordService extends Service {
     private void doStopRecording() {
         L.v(TAG, "doStopRecording");
         RecordHelper.getInstance().stop();
+        stopSelf();
+    }
+
+    private void doCancelRecording() {
+        L.v(TAG, "doCancelRecording");
+        RecordHelper.getInstance().cancel();
         stopSelf();
     }
 

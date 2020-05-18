@@ -29,6 +29,8 @@ public class RecordConfig implements Serializable {
      */
     private int sampleRate = 16000;
 
+    private long recordMaxTime = 6000L;//录音最大时长 单位毫秒；默认6000 MS【一分钟】
+
     public RecordConfig() {
     }
 
@@ -144,6 +146,14 @@ public class RecordConfig implements Serializable {
         return this;
     }
 
+    public RecordConfig setRecordMaxTime(long recordMaxTime) {
+        this.recordMaxTime = recordMaxTime;
+        return this;
+    }
+
+    public long getRecordMaxTime() {
+        return recordMaxTime;
+    }
 
     @Override
     public String toString() {

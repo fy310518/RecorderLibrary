@@ -8,8 +8,9 @@ public interface RecordSoundSizeListener {
     /**
      * 实时返回音量大小
      *
-     * @param soundSize 当前音量大小
+     * @param soundSize  当前音量大小
+     * @param recordTime 已经录音时长
      */
-    void onSoundSize(int soundSize);
+    void onSoundSize(int soundSize, long recordTime);
 
 }

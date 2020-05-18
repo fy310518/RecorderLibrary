@@ -66,6 +66,12 @@ public class RecordManager {
         RecordService.resumeRecording(context);
     }
 
+    public void cancel() {
+        if (context == null) {
+            return;
+        }
+        RecordService.cancelRecording(context);
+    }
     public void pause() {
         if (context == null) {
             return;

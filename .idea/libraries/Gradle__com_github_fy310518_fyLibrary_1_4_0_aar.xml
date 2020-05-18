@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.fy310518:fyLibrary:1.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fyLibrary-1.4.0.aar/34d3657d2ca6b94128358f29244460f4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fyLibrary-1.4.0.aar/34d3657d2ca6b94128358f29244460f4/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fyLibrary-1.4.0.aar/19a67c699f4bb27f0d520c9a79716956/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fyLibrary-1.4.0.aar/19a67c699f4bb27f0d520c9a79716956/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

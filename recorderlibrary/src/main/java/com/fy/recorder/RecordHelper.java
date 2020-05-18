@@ -41,10 +41,12 @@ public class RecordHelper {
     private RecordSoundSizeListener recordSoundSizeListener;
     private RecordResultListener recordResultListener;
     private RecordFftDataListener recordFftDataListener;
+
     private RecordConfig currentConfig;
     private AudioRecordThread audioRecordThread;
     private Handler mainHandler = new Handler(Looper.getMainLooper());
 
+    private long recordTime;//已经录制时间
     private File resultFile = null;
     private File tmpFile = null;
     private List<File> files = new ArrayList<>();
@@ -125,6 +127,11 @@ public class RecordHelper {
         }
     }
 
+    public void cancel() {
+        stop();
+        FileUtils.deleteFileSafely(resultFile);
+    }
+
     void pause() {
         if (state != RecordState.RECORDING) {
             L.e(TAG, "状态异常当前状态： %s"+ state.name());
@@ -159,7 +166,7 @@ public class RecordHelper {
 
         if (state == RecordState.STOP || state == RecordState.PAUSE) {
             if (recordSoundSizeListener != null) {
-                recordSoundSizeListener.onSoundSize(0);
+                recordSoundSizeListener.onSoundSize(0, recordTime);
             }
         }
     }
@@ -196,7 +203,7 @@ public class RecordHelper {
 
     private FftFactory fftFactory = new FftFactory(FftFactory.Level.Original);
 
-    private void notifyData(final byte[] data) {
+    private void notifyData(final byte[] data, final long recordTime) {
         if (recordDataListener == null && recordSoundSizeListener == null && recordFftDataListener == null) {
             return;
         }
@@ -211,7 +218,7 @@ public class RecordHelper {
                     byte[] fftData = fftFactory.makeFftData(data);
                     if (fftData != null) {
                         if (recordSoundSizeListener != null) {
-                            recordSoundSizeListener.onSoundSize(getDb(fftData));
+                            recordSoundSizeListener.onSoundSize(getDb(fftData), recordTime);
                         }
                         if (recordFftDataListener != null) {
                             recordFftDataListener.onFftData(fftData);
@@ -247,6 +254,7 @@ public class RecordHelper {
     private class AudioRecordThread extends Thread {
         private AudioRecord audioRecord;
         private int bufferSize;
+        private long startTime = System.currentTimeMillis();
 
         AudioRecordThread() {
             bufferSize = AudioRecord.getMinBufferSize(currentConfig.getSampleRate(),
@@ -288,8 +296,13 @@ public class RecordHelper {
                 byte[] byteBuffer = new byte[bufferSize];
 
                 while (state == RecordState.RECORDING) {
+                    recordTime = System.currentTimeMillis() - startTime;//已经录制时间
+                    if (recordTime > currentConfig.getRecordMaxTime()){//录制时间达到最大
+                        break;
+                    }
+
                     int end = audioRecord.read(byteBuffer, 0, byteBuffer.length);
-                    notifyData(byteBuffer);
+                    notifyData(byteBuffer, recordTime);
                     fos.write(byteBuffer, 0, end);
                     fos.flush();
                 }
@@ -328,11 +341,16 @@ public class RecordHelper {
                 short[] byteBuffer = new short[bufferSize];
 
                 while (state == RecordState.RECORDING) {
+                    recordTime = System.currentTimeMillis() - startTime;
+                    if (recordTime > currentConfig.getRecordMaxTime()){//录制时间达到最大
+                        break;
+                    }
+
                     int end = audioRecord.read(byteBuffer, 0, byteBuffer.length);
                     if (mp3EncodeThread != null) {
                         mp3EncodeThread.addChangeBuffer(new Mp3EncodeThread.ChangeBuffer(byteBuffer, end));
                     }
-                    notifyData(ByteUtils.toBytes(byteBuffer));
+                    notifyData(ByteUtils.toBytes(byteBuffer), recordTime);
                 }
                 audioRecord.stop();
             } catch (Exception e) {
