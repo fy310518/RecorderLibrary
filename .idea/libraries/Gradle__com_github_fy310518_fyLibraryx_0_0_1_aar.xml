@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.fy310518:fyLibraryx:0.0.1@aar">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../.gradle/caches/transforms-2/files-2.1/8ed85246fd820802e4424498ef1e1c76/jetified-fyLibraryx-0.0.1/res" />
+      <root url="jar://$PROJECT_DIR$/../../.gradle/caches/transforms-2/files-2.1/8ed85246fd820802e4424498ef1e1c76/jetified-fyLibraryx-0.0.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../.gradle/caches/transforms-2/files-2.1/8ed85246fd820802e4424498ef1e1c76/jetified-fyLibraryx-0.0.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../.gradle/caches/modules-2/files-2.1/com.github.fy310518/fyLibraryx/0.0.1/1d6c9d4faa16a3ed20f29f9868c7b5e73467e5a1/fyLibraryx-0.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

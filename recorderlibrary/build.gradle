@@ -11,7 +11,7 @@ android {
         targetSdkVersion var.targetSdkVersion
 
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -51,7 +51,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.android.support:appcompat-v7:$var.supportLibraryVersion"
-    implementation "com.github.fy310518:fyLibrary:$var.baseLibrary"
+//    implementation "androidx.appcompat:appcompat:$var.androidx"
+
+    implementation "com.github.fy310518:fyLibraryx:$var.fyLibraryx"
 
 }

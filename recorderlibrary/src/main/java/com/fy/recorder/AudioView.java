@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -50,12 +49,12 @@ public class AudioView extends View {
         init();
     }
 
-    public AudioView(Context context, @Nullable AttributeSet attrs) {
+    public AudioView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public AudioView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public AudioView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

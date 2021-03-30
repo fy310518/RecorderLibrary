@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RecorderLibrary.iml" filepath="$PROJECT_DIR$/RecorderLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/RecorderLibrary-app.iml" filepath="$PROJECT_DIR$/app/RecorderLibrary-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/recorderlibrary/recorderlibrary.iml" filepath="$PROJECT_DIR$/recorderlibrary/recorderlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/recorderLibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/recorderLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/recorderLibrary.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/recorderLibrary.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/recorderlibrary/recorderLibrary.recorderlibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/recorderlibrary/recorderLibrary.recorderlibrary.iml" />
     </modules>
   </component>
 </project>
