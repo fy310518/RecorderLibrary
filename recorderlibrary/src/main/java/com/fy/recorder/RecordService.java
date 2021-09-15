@@ -52,6 +52,16 @@ public class RecordService extends Service {
     }
 
     @Override
+    public void onDestroy() {
+        RecordService.setRecordStateListener(null);
+        RecordService.setRecordDataListener(null);
+        RecordService.setRecordSoundSizeListener(null);
+        RecordService.setRecordResultListener(null);
+        RecordService.setRecordFftDataListener(null);
+        super.onDestroy();
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent == null) {
             return super.onStartCommand(intent, flags, startId);
